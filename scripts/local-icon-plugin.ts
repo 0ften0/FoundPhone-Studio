@@ -1,14 +1,25 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import type { Plugin } from "vite";
-const directory = path.resolve("work/original-icons");
+const shippedDirectory = path.resolve("assets/app-icons");
+const shipped = existsSync(path.join(shippedDirectory, "manifest.json"));
+const directory = shipped
+  ? shippedDirectory
+  : path.resolve("work/original-icons");
+const manifestFile = path.join(
+  directory,
+  shipped ? "manifest.json" : "sources.json",
+);
 export function localIconPlugin(command: string): Plugin {
   const enabled =
+    shipped ||
     process.env.FOUNDPHONE_ORIGINAL_ICONS === "1" ||
-    (command === "serve" && existsSync(path.join(directory, "sources.json")));
+    (command === "serve" && existsSync(manifestFile));
   const manifest = enabled
-    ? (JSON.parse(readFileSync(path.join(directory, "sources.json"), "utf8"))
-        .results as Record<string, { file: string }>)
+    ? (JSON.parse(readFileSync(manifestFile, "utf8")).results as Record<
+        string,
+        { file: string }
+      >)
     : {};
   const files = new Set(Object.values(manifest).map((x) => x.file));
   return {

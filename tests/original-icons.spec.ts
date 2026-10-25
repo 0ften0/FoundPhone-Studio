@@ -1,20 +1,22 @@
 import { test, expect } from "@playwright/test";
 import { readFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
+import { compileStory } from "../src/story-engine/compiler";
 import { originalIconFiles } from "../src/ios/originalIconFiles";
-test("local original icons retain downloaded bytes and decode on desktop and App Store", async ({
+test("published icons match source bytes and decode on desktop and App Store", async ({
   page,
   request,
 }) => {
-  test.skip(!existsSync("work/original-icons/sources.json"), "未安装本地图标");
+  const manifestFile = existsSync("assets/app-icons/manifest.json")
+    ? "assets/app-icons/manifest.json"
+    : "work/original-icons/sources.json";
+  test.skip(!existsSync(manifestFile), "未安装图标");
   const probe = await request.get("/icon-assets/camera.png");
   test.skip(
     !probe.ok() || !probe.headers()["content-type"]?.startsWith("image/"),
     "公开构建不带本地图标",
   );
-  const manifest = JSON.parse(
-    readFileSync("work/original-icons/sources.json", "utf8"),
-  ).results;
+  const manifest = JSON.parse(readFileSync(manifestFile, "utf8")).results;
   await Promise.all(
     Object.entries(originalIconFiles).map(async ([id, file]) => {
       const response = await request.get("/icon-assets/" + file);
@@ -25,6 +27,13 @@ test("local original icons retain downloaded bytes and decode on desktop and App
           .digest("hex"),
         id,
       ).toBe(manifest[id].sha256);
+    }),
+  );
+  await page.route("**/test-work.json", (r) =>
+    r.fulfill({
+      json: compileStory(
+        JSON.parse(readFileSync("stories/test-preview/story.json", "utf8")),
+      ).work,
     }),
   );
   await page.goto("/?preview=test");
