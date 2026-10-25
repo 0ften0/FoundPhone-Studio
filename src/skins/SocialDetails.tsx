@@ -248,7 +248,6 @@ export function SocialDetail(p: {
           </p>
         )}
       </div>
-      {weibo && <div className="weibo-bottom-actions">{actions}</div>}
       <form
         className="post-detail-reply"
         onSubmit={(e) => {

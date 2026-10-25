@@ -14,6 +14,8 @@ import {
   Repeat2,
   User,
   Users,
+  Share2,
+  ThumbsUp,
 } from "lucide-react";
 import { useState } from "react";
 import type { Item } from "../schema";
@@ -63,6 +65,29 @@ function PostHeader({ item, p }: { item: Item; p: Props }) {
     </button>
   );
 }
+function WeiboActions({ p, item }: { p: Props; item: Item }) {
+  const [liked, setLiked] = useSkinState<boolean>(p, `liked-${item.id}`, false);
+  return (
+    <div className="social-actions weibo-actions">
+      <button aria-label={`转发${item.title}`} onClick={() => p.onItem(item)}>
+        <Share2 size={17} />
+        {meta(item, "reposts", "转发")}
+      </button>
+      <button aria-label={`评论${item.title}`} onClick={() => p.onItem(item)}>
+        <MessageCircle size={17} />
+        {item.comments.length || "评论"}
+      </button>
+      <button
+        aria-label={`喜欢${item.title}`}
+        aria-pressed={liked}
+        onClick={() => setLiked(!liked)}
+      >
+        <ThumbsUp size={17} fill={liked ? "currentColor" : "none"} />
+        {item.likes + (liked ? 1 : 0) || "赞"}
+      </button>
+    </div>
+  );
+}
 export function WeiboSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "关注");
   const [feed, setFeed] = useState("全部");
@@ -109,7 +134,7 @@ export function WeiboSkin(p: Props) {
               <p>{i.body}</p>
               {i.media && <Media item={i} />}
             </button>
-            <Actions p={p} item={i} />
+            <WeiboActions p={p} item={i} />
           </article>
         ))}
         <Empty items={list} />

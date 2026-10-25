@@ -672,7 +672,16 @@ export function HomeLauncher(p: Props) {
                   />
                 </label>
                 <nav className="library-filters">
-                  {["全部", "系统", "中国", "国际", "已安装"].map((label) => (
+                  {[
+                    "全部",
+                    "系统",
+                    "通讯",
+                    "社交",
+                    "影音",
+                    "生活",
+                    "工具",
+                    "已安装",
+                  ].map((label) => (
                     <button
                       key={label}
                       aria-pressed={filter === label}

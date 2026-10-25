@@ -99,7 +99,16 @@ export function AppManager({
               value={group}
               onChange={(e) => setGroup(e.target.value)}
             >
-              {["全部", "系统", "中国", "国际", "自定义"].map((c) => (
+              {[
+                "全部",
+                "系统",
+                "通讯",
+                "社交",
+                "影音",
+                "生活",
+                "工具",
+                "自定义",
+              ].map((c) => (
                 <option key={c}>{c}</option>
               ))}
             </select>

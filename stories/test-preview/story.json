@@ -14,6 +14,24 @@
   },
   "installedApps": [
     "appstore",
+    {
+      "id": "wechat",
+      "name": "微信",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": ""
+    },
+    {
+      "id": "douyin",
+      "name": "抖音",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": ""
+    },
     "phone",
     "messages",
     "contacts",
@@ -42,11 +60,9 @@
     "find",
     "calculator",
     "settings",
-    "wechat",
     "qq",
     "weibo",
     "redbook",
-    "douyin",
     "bilibili",
     "alipay",
     "taobao",

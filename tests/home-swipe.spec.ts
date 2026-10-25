@@ -25,7 +25,12 @@ test("mouse dragging an app flips pages without opening or editing it", async ({
   page,
 }) => {
   await ready(page);
-  const icon = await page.locator('[data-home-key="notes"]').boundingBox();
+  const icon = await page
+    .locator(".home-app-grid")
+    .first()
+    .locator(".launcher-cell")
+    .nth(3)
+    .boundingBox();
   await page.mouse.move(icon!.x + 30, icon!.y + 25);
   await page.mouse.down();
   await page.mouse.move(icon!.x - 180, icon!.y + 25, { steps: 10 });
@@ -74,7 +79,12 @@ test("touch swipe over app icons and empty desktop flips both directions", async
         touchPoints: [],
       });
     }
-    const icon = await page.locator('[data-home-key="notes"]').boundingBox();
+    const icon = await page
+      .locator(".home-app-grid")
+      .first()
+      .locator(".launcher-cell")
+      .nth(3)
+      .boundingBox();
     await swipe(icon!.x + 30, icon!.y + 25, icon!.x - 190);
     await settled(page, 2);
     const box = await page.locator(".home-pages").boundingBox();

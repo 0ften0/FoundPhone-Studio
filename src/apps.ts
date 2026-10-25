@@ -10,16 +10,46 @@ export const essentialApps = [
   "safari",
   "settings",
 ];
+const systemApps = new Set([
+  "appstore",
+  "phone",
+  "messages",
+  "contacts",
+  "photos",
+  "camera",
+  "safari",
+  "notes",
+  "calendar",
+  "mail",
+  "clock",
+  "reminders",
+  "files",
+  "music",
+  "maps",
+  "weather",
+  "wallet",
+  "health",
+  "find",
+  "calculator",
+  "settings",
+]);
 export function category(id: string) {
-  if (id === "appstore") return "系统";
-  const index = registry.findIndex((a) => a.id === id);
-  return index < 0
-    ? "自定义"
-    : index < 20
-      ? "系统"
-      : index < 31
-        ? "中国"
-        : "国际";
+  if (systemApps.has(id)) return "系统";
+  const app = registry.find((a) => a.id === id);
+  if (!app) return "自定义";
+  return (
+    (
+      {
+        messaging: "通讯",
+        social: "社交",
+        media: "影音",
+        records: "生活",
+        document: "工具",
+        settings: "工具",
+        calculator: "工具",
+      } as Record<string, string>
+    )[app.engine] || "工具"
+  );
 }
 export function installApp(w: Work, id: string) {
   let app = w.apps.find((a) => a.id === id);

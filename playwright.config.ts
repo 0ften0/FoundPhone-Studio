@@ -6,6 +6,7 @@ export default defineConfig({
     "release.spec.ts",
     "launcher.spec.ts",
     "home-swipe.spec.ts",
+    "app-organization.spec.ts",
     "preview.spec.ts",
     "mymy.spec.ts",
     "reference-next.spec.ts",

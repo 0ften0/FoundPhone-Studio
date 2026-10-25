@@ -94,3 +94,26 @@ it("adds store to legacy work without changing author data or other app states",
     validateLayout(defaultLayout(w), w).apps.some((a) => a.id === "appstore"),
   ).toBe(true);
 });
+
+it("migrates preview folders once while preserving custom folders and widgets", async () => {
+  const preview = await import("../../stories/test-preview/story.json");
+  const w = compileStory(preview.default).work;
+  const before = JSON.stringify(w);
+  const old = defaultLayout(w);
+  old.previewLayoutRevision = 0;
+  old.apps.find((a) => a.id === "wechat")!.folder = "聊天";
+  old.apps.find((a) => a.id === "douyin")!.folder = "国内";
+  old.apps.find((a) => a.id === "instagram")!.folder = "国际";
+  old.apps.find((a) => a.id === "clock")!.folder = "我的工具";
+  old.widgets.push({ id: "widget-keep", type: "battery", size: "small" });
+  const migrated = validateLayout(old, w);
+  for (const id of ["wechat", "douyin", "instagram"])
+    expect(migrated.apps.find((a) => a.id === id)!.folder).toBe("");
+  expect(migrated.apps.find((a) => a.id === "clock")!.folder).toBe("我的工具");
+  expect(migrated.widgets).toEqual(old.widgets);
+  expect(JSON.stringify(w)).toBe(before);
+  migrated.apps.find((a) => a.id === "wechat")!.folder = "作者新建文件夹";
+  expect(
+    validateLayout(migrated, w).apps.find((a) => a.id === "wechat")!.folder,
+  ).toBe("作者新建文件夹");
+});
