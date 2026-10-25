@@ -5,6 +5,7 @@ export default defineConfig({
     "runtime.spec.ts",
     "release.spec.ts",
     "launcher.spec.ts",
+    "home-swipe.spec.ts",
     "preview.spec.ts",
     "mymy.spec.ts",
     "reference-next.spec.ts",

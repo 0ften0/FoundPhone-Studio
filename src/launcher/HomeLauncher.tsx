@@ -144,11 +144,81 @@ export function HomeLauncher(p: Props) {
       hover: number;
       pointer: number;
     } | null>(null),
-    suppress = useRef(false);
+    suppress = useRef(false),
+    swipe = useRef<{
+      pointer: number;
+      x: number;
+      y: number;
+      left: number;
+      started: number;
+      active: boolean;
+    } | null>(null);
   const pages = packHome(homeEntries(p.layout), p.layout.positions),
     apps = p.layout.apps,
     active = apps.find((a) => a.id === selected);
   if (editing && pages.length < 20) pages.push([]);
+  const beginSwipe = (e: PointerEvent<HTMLDivElement>) => {
+    if (
+      editing ||
+      e.button !== 0 ||
+      !(e.target as HTMLElement).closest(".home-pages")
+    )
+      return;
+    const el = pager.current;
+    if (!el) return;
+    swipe.current = {
+      pointer: e.pointerId,
+      x: e.clientX,
+      y: e.clientY,
+      left: el.scrollLeft,
+      started: Date.now(),
+      active: false,
+    };
+    el.setPointerCapture(e.pointerId);
+  };
+  const moveSwipe = (e: PointerEvent<HTMLDivElement>) => {
+    const gesture = swipe.current,
+      el = pager.current;
+    if (!gesture || !el || gesture.pointer !== e.pointerId || editing) return;
+    const dx = e.clientX - gesture.x,
+      dy = e.clientY - gesture.y;
+    if (!gesture.active) {
+      if (Date.now() - gesture.started >= 450) return;
+      if (Math.abs(dx) < 10 || Math.abs(dx) <= Math.abs(dy) * 1.2) return;
+      gesture.active = true;
+      clearTimeout(timer.current);
+      drag.current = null;
+      suppress.current = true;
+      el.style.scrollSnapType = "none";
+      el.style.scrollBehavior = "auto";
+    }
+    e.preventDefault();
+    e.stopPropagation();
+    const scale = el.getBoundingClientRect().width / el.clientWidth;
+    el.scrollLeft = gesture.left - dx / scale;
+  };
+  const finishSwipe = (e: PointerEvent<HTMLDivElement>, cancelled = false) => {
+    const gesture = swipe.current,
+      el = pager.current;
+    if (!gesture || gesture.pointer !== e.pointerId) return;
+    swipe.current = null;
+    if (!gesture.active || !el) return;
+    clearTimeout(timer.current);
+    e.stopPropagation();
+    const dx = e.clientX - gesture.x;
+    const origin = Math.round(gesture.left / el.clientWidth);
+    const step =
+      !cancelled && Math.abs(dx) > el.getBoundingClientRect().width * 0.14
+        ? dx < 0
+          ? 1
+          : -1
+        : 0;
+    const next = Math.max(0, Math.min(pages.length - 1, origin + step));
+    el.style.scrollSnapType = "";
+    el.style.scrollBehavior = "";
+    el.scrollTo({ left: next * el.clientWidth, behavior: "smooth" });
+    setPage(next);
+  };
   const patch = (id: string, fn: (a: AppConfig) => void) =>
     p.change((l) => {
       const a = l.apps.find((a) => a.id === id);
@@ -456,6 +526,10 @@ export function HomeLauncher(p: Props) {
       }
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      onPointerDownCapture={beginSwipe}
+      onPointerMoveCapture={moveSwipe}
+      onPointerUpCapture={(e) => finishSwipe(e)}
+      onPointerCancelCapture={(e) => finishSwipe(e, true)}
       onPointerDown={(e) => {
         if ((e.target as HTMLElement).closest("button,input,select,label"))
           return;
