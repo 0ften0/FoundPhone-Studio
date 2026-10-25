@@ -81,4 +81,4 @@ npm run preview
 
 验证命令：`npm run typecheck`、`npm run lint`、`npm test`、`npm run story:validate`、`npm run story:test`、`npm run build`。浏览器回归使用 `npm run test:e2e`。
 
-项目自有代码采用 MIT。第三方代码按各自许可或授权使用；请保留 `LICENSE`、`THIRD_PARTY_LICENSES.txt`、`BRAND_NOTICE.txt`、`licenses/` 和源文件中的版权通知。故事与素材的权利由其作者另行确认。安装、启动和构建不会自动 Fork、Star 或推送仓库。
+项目许可见 [LICENSE](LICENSE)。故事与素材的权利由其作者确认。安装、启动和构建不会自动 Fork、Star 或推送仓库。

@@ -10,4 +10,4 @@ Install Node.js 22 and run npm ci, npm run story:validate, npm run story:test, a
 
 AI is an authoring tool, not a runtime dependency. Story data, UI and player saves remain separate. The catalog has 49 App identities with differing page coverage; this does not imply full feature parity with real products. Calls and social interactions are simulated.
 
-Preserve LICENSE, dependency licenses and source copyright notices. Only publish story content and media you have permission to share. The project does not automatically Fork, Star or Push during installation, startup or build.
+See LICENSE and accompanying notices. Only publish story content and media you have permission to share. The project does not automatically Fork, Star or Push during installation, startup or build.
