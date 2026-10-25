@@ -1,0 +1,163 @@
+{
+  "scriptVersion": 1,
+  "id": "template-demo",
+  "title": "捡手机",
+  "revision": 1,
+  "phone": {
+    "owner": "机主",
+    "date": "2026-10-25",
+    "time": "09:41",
+    "wallpaper": "silver"
+  },
+  "installedApps": [
+    "appstore",
+    "phone",
+    "messages",
+    "photos",
+    "notes",
+    "safari",
+    "settings",
+    "contacts",
+    "kakao",
+    "instagram",
+    "twitter"
+  ],
+  "contacts": [
+    {
+      "id": "tester",
+      "name": "演示联系人"
+    }
+  ],
+  "chats": [
+    {
+      "id": "test-kkt-thread",
+      "app": "kakao",
+      "title": "使用演示",
+      "participants": ["owner", "tester"],
+      "messages": [
+        {
+          "id": "kkt-first",
+          "senderId": "tester",
+          "body": "欢迎使用捡手机。你可以让 AI 替换这些演示文字。"
+        },
+        {
+          "id": "kkt-last",
+          "senderId": "owner",
+          "body": "轻触这条消息，体验一次模拟来电。"
+        }
+      ]
+    }
+  ],
+  "content": {
+    "instagram": [
+      {
+        "id": "ig-test-post",
+        "title": "演示内容",
+        "body": "这是一条演示内容，可以由你的故事替换。",
+        "sender": "演示联系人",
+        "comments": ["这是一条演示评论。"],
+        "likes": 1
+      },
+      {
+        "id": "ig-after-call",
+        "title": "通话后的动态",
+        "body": "你已完成通话联动。轻触这条动态，完成演示。",
+        "hidden": true,
+        "sender": "演示联系人"
+      },
+      {
+        "id": "ig-test-story",
+        "title": "演示内容",
+        "body": "这是一条演示内容，可以由你的故事替换。",
+        "sender": "演示联系人",
+        "meta": {
+          "story": "true"
+        }
+      },
+      {
+        "id": "ig-test-dm",
+        "title": "演示内容",
+        "body": "这是一条演示内容，可以由你的故事替换。",
+        "sender": "演示联系人",
+        "folder": "私信"
+      }
+    ],
+    "twitter": [
+      {
+        "id": "x-test-post",
+        "title": "演示内容",
+        "body": "这是一条演示内容，可以由你的故事替换。",
+        "sender": "演示联系人",
+        "likes": 2,
+        "comments": ["这是一条演示评论。"]
+      }
+    ]
+  },
+  "events": [
+    {
+      "id": "read-last",
+      "label": "模拟来电",
+      "event": "read",
+      "target": "kkt-last",
+      "actions": [
+        {
+          "type": "call",
+          "key": "test-call",
+          "value": "演示联系人"
+        }
+      ]
+    },
+    {
+      "id": "end-call",
+      "label": "通话后显示动态",
+      "event": "callEnded",
+      "target": "test-call",
+      "actions": [
+        {
+          "type": "unlock",
+          "key": "ig-after-call",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "read-linked",
+      "label": "完成演示",
+      "event": "read",
+      "target": "ig-after-call",
+      "actions": [
+        {
+          "type": "ending",
+          "key": "",
+          "value": "演示完成"
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "聊天、来电与动态联动",
+      "steps": [
+        {
+          "event": "read",
+          "target": "kkt-last"
+        },
+        {
+          "event": "callAnswered",
+          "target": "test-call"
+        },
+        {
+          "event": "callEnded",
+          "target": "test-call"
+        },
+        {
+          "event": "read",
+          "target": "ig-after-call"
+        }
+      ],
+      "ending": "演示完成",
+      "expectUnlocked": ["ig-after-call"]
+    }
+  ],
+  "description": "中性的交互演示，内容可全部替换。"
+}
