@@ -21,7 +21,7 @@ export const originalIconFiles: Record<string, string> = {
   phone: "phone.png",
   safari: "safari.png",
   threads: "threads.png",
-  twitter: "twitter.png",
+  twitter: "twitter.svg",
   telegram: "telegram.png",
   instagram: "instagram.png",
   youtube: "youtube.png",

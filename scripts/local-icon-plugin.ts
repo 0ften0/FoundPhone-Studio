@@ -46,7 +46,11 @@ export function localIconPlugin(command: string): Plugin {
         }
         res.setHeader(
           "Content-Type",
-          name.endsWith(".png") ? "image/png" : "image/jpeg",
+          name.endsWith(".svg")
+            ? "image/svg+xml"
+            : name.endsWith(".png")
+              ? "image/png"
+              : "image/jpeg",
         );
         res.setHeader("Cache-Control", "no-cache");
         res.end(readFileSync(path.join(directory, name)));

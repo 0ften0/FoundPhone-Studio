@@ -4,7 +4,7 @@ An interactive virtual phone story framework. Fork this repository, open it in a
 
 [Live demo](https://keoyyo85.github.io/FoundPhone-Studio/) · [中文教程](README.md)
 
-The default template contains neutral demonstration text: open KakaoTalk, tap the last message, answer and end the simulated call, then read the newly revealed Instagram post. The blank starting point is stories/blank/story.json and can be viewed with ?template=blank.
+The default template is the full UI test preview: all 49 Apps are installed with generic placeholder text and no story. The Dock has four Apps. ?preview=test opens the same test configuration. The blank starting point remains stories/blank/story.json and ?template=blank.
 
 Install Node.js 22 and run npm ci, npm run story:validate, npm run story:test, and npm run story:preview. Build a static site with npm run build. See docs/GITHUB_PAGES.md for deployment instructions.
 

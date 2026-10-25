@@ -1,9 +1,9 @@
 {
   "scriptVersion": 1,
-  "id": "ui-test-phone",
+  "id": "ui-test-phone-v2",
   "title": "测试预览",
   "description": "仅用于界面测试，不含剧情",
-  "revision": 1,
+  "revision": 2,
   "phone": {
     "owner": "机主",
     "date": "2026-10-25",
@@ -18,7 +18,15 @@
     "messages",
     "contacts",
     "photos",
-    "camera",
+    {
+      "id": "camera",
+      "name": "相机",
+      "installed": true,
+      "visible": true,
+      "dock": true,
+      "folder": "",
+      "icon": ""
+    },
     "safari",
     "notes",
     "calendar",

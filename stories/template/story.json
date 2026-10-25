@@ -1,163 +1,683 @@
 {
   "scriptVersion": 1,
-  "id": "template-demo",
+  "id": "ui-test-phone-v2",
   "title": "捡手机",
-  "revision": 1,
+  "description": "仅用于界面测试，不含剧情",
+  "revision": 2,
   "phone": {
     "owner": "机主",
     "date": "2026-10-25",
     "time": "09:41",
-    "wallpaper": "silver"
+    "battery": 94,
+    "network": "5G",
+    "wallpaper": "apple-wwdc26"
   },
   "installedApps": [
     "appstore",
     "phone",
     "messages",
-    "photos",
-    "notes",
-    "safari",
-    "settings",
     "contacts",
-    "kakao",
+    "photos",
+    {
+      "id": "camera",
+      "name": "相机",
+      "installed": true,
+      "visible": true,
+      "dock": true,
+      "folder": "",
+      "icon": ""
+    },
+    "safari",
+    "notes",
+    "calendar",
+    "mail",
+    "clock",
+    "reminders",
+    "files",
+    "music",
+    "maps",
+    "weather",
+    "wallet",
+    "health",
+    "find",
+    "calculator",
+    "settings",
+    "wechat",
+    "qq",
+    "weibo",
+    "redbook",
+    "douyin",
+    "bilibili",
+    "alipay",
+    "taobao",
+    "netease",
+    "delivery",
+    "forum",
+    "whatsapp",
     "instagram",
-    "twitter"
+    "tiktok",
+    "twitter",
+    "telegram",
+    "discord",
+    "youtube",
+    "line",
+    "snapchat",
+    "facebook",
+    "messenger",
+    "reddit",
+    "spotify",
+    "netflix",
+    "pinterest",
+    "threads",
+    "kakao"
   ],
   "contacts": [
     {
-      "id": "tester",
-      "name": "演示联系人"
+      "id": "test-contact",
+      "name": "测试联系人",
+      "phone": "",
+      "bio": "这是一条测试内容。"
     }
   ],
   "chats": [
     {
-      "id": "test-kkt-thread",
-      "app": "kakao",
-      "title": "使用演示",
-      "participants": ["owner", "tester"],
+      "id": "test-chat-messages",
+      "app": "messages",
+      "title": "测试会话",
+      "participants": [
+        "owner",
+        "test-contact"
+      ],
       "messages": [
         {
-          "id": "kkt-first",
-          "senderId": "tester",
-          "body": "欢迎使用捡手机。你可以让 AI 替换这些演示文字。"
+          "id": "test-message-messages",
+          "body": "这是一条测试消息。",
+          "senderId": "test-contact"
+        }
+      ]
+    },
+    {
+      "id": "test-chat-wechat",
+      "app": "wechat",
+      "title": "测试会话",
+      "participants": [
+        "owner",
+        "test-contact"
+      ],
+      "messages": [
+        {
+          "id": "test-message-wechat",
+          "body": "这是一条测试消息。",
+          "senderId": "test-contact"
+        }
+      ]
+    },
+    {
+      "id": "test-chat-qq",
+      "app": "qq",
+      "title": "测试会话",
+      "participants": [
+        "owner",
+        "test-contact"
+      ],
+      "messages": [
+        {
+          "id": "test-message-qq",
+          "body": "这是一条测试消息。",
+          "senderId": "test-contact"
+        }
+      ]
+    },
+    {
+      "id": "test-chat-whatsapp",
+      "app": "whatsapp",
+      "title": "测试会话",
+      "participants": [
+        "owner",
+        "test-contact"
+      ],
+      "messages": [
+        {
+          "id": "test-message-whatsapp",
+          "body": "这是一条测试消息。",
+          "senderId": "test-contact"
+        }
+      ]
+    },
+    {
+      "id": "test-chat-telegram",
+      "app": "telegram",
+      "title": "测试会话",
+      "participants": [
+        "owner",
+        "test-contact"
+      ],
+      "messages": [
+        {
+          "id": "test-message-telegram",
+          "body": "这是一条测试消息。",
+          "senderId": "test-contact"
+        }
+      ]
+    },
+    {
+      "id": "test-chat-discord",
+      "app": "discord",
+      "title": "测试会话",
+      "participants": [
+        "owner",
+        "test-contact"
+      ],
+      "messages": [
+        {
+          "id": "test-message-discord",
+          "body": "这是一条测试消息。",
+          "senderId": "test-contact"
+        }
+      ]
+    },
+    {
+      "id": "test-chat-line",
+      "app": "line",
+      "title": "测试会话",
+      "participants": [
+        "owner",
+        "test-contact"
+      ],
+      "messages": [
+        {
+          "id": "test-message-line",
+          "body": "这是一条测试消息。",
+          "senderId": "test-contact"
+        }
+      ]
+    },
+    {
+      "id": "test-chat-messenger",
+      "app": "messenger",
+      "title": "测试会话",
+      "participants": [
+        "owner",
+        "test-contact"
+      ],
+      "messages": [
+        {
+          "id": "test-message-messenger",
+          "body": "这是一条测试消息。",
+          "senderId": "test-contact"
+        }
+      ]
+    },
+    {
+      "id": "test-chat-kakao",
+      "app": "kakao",
+      "title": "测试会话",
+      "participants": [
+        "owner",
+        "test-contact"
+      ],
+      "messages": [
+        {
+          "id": "test-message-kakao",
+          "body": "这是一条测试消息。",
+          "senderId": "test-contact"
         },
         {
-          "id": "kkt-last",
-          "senderId": "owner",
-          "body": "轻触这条消息，体验一次模拟来电。"
+          "id": "test-reply-kakao",
+          "body": "这是一条测试回复。",
+          "senderId": "owner"
         }
       ]
     }
   ],
   "content": {
+    "phone": [
+      {
+        "id": "test-item-phone",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "contacts": [
+      {
+        "id": "test-item-contacts",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "photos": [
+      {
+        "id": "test-item-photos",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "camera": [
+      {
+        "id": "test-item-camera",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "safari": [
+      {
+        "id": "test-item-safari",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "notes": [
+      {
+        "id": "test-item-notes",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "calendar": [
+      {
+        "id": "test-item-calendar",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "mail": [
+      {
+        "id": "test-item-mail",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "clock": [
+      {
+        "id": "test-item-clock",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "reminders": [
+      {
+        "id": "test-item-reminders",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "files": [
+      {
+        "id": "test-item-files",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "music": [
+      {
+        "id": "test-item-music",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "maps": [
+      {
+        "id": "test-item-maps",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "weather": [
+      {
+        "id": "test-item-weather",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "wallet": [
+      {
+        "id": "test-item-wallet",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "health": [
+      {
+        "id": "test-item-health",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "find": [
+      {
+        "id": "test-item-find",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "calculator": [
+      {
+        "id": "test-item-calculator",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "settings": [
+      {
+        "id": "test-item-settings",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "weibo": [
+      {
+        "id": "test-item-weibo",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "redbook": [
+      {
+        "id": "test-item-redbook",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "douyin": [
+      {
+        "id": "test-item-douyin",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "bilibili": [
+      {
+        "id": "test-item-bilibili",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "alipay": [
+      {
+        "id": "test-item-alipay",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "taobao": [
+      {
+        "id": "test-item-taobao",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "netease": [
+      {
+        "id": "test-item-netease",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "delivery": [
+      {
+        "id": "test-item-delivery",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "forum": [
+      {
+        "id": "test-item-forum",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
     "instagram": [
       {
-        "id": "ig-test-post",
-        "title": "演示内容",
-        "body": "这是一条演示内容，可以由你的故事替换。",
-        "sender": "演示联系人",
-        "comments": ["这是一条演示评论。"],
-        "likes": 1
-      },
+        "id": "test-item-instagram",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "tiktok": [
       {
-        "id": "ig-after-call",
-        "title": "通话后的动态",
-        "body": "你已完成通话联动。轻触这条动态，完成演示。",
-        "hidden": true,
-        "sender": "演示联系人"
-      },
-      {
-        "id": "ig-test-story",
-        "title": "演示内容",
-        "body": "这是一条演示内容，可以由你的故事替换。",
-        "sender": "演示联系人",
-        "meta": {
-          "story": "true"
-        }
-      },
-      {
-        "id": "ig-test-dm",
-        "title": "演示内容",
-        "body": "这是一条演示内容，可以由你的故事替换。",
-        "sender": "演示联系人",
-        "folder": "私信"
+        "id": "test-item-tiktok",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
       }
     ],
     "twitter": [
       {
-        "id": "x-test-post",
-        "title": "演示内容",
-        "body": "这是一条演示内容，可以由你的故事替换。",
-        "sender": "演示联系人",
-        "likes": 2,
-        "comments": ["这是一条演示评论。"]
+        "id": "test-item-twitter",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "youtube": [
+      {
+        "id": "test-item-youtube",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "snapchat": [
+      {
+        "id": "test-item-snapchat",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "facebook": [
+      {
+        "id": "test-item-facebook",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "reddit": [
+      {
+        "id": "test-item-reddit",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "spotify": [
+      {
+        "id": "test-item-spotify",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "netflix": [
+      {
+        "id": "test-item-netflix",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "pinterest": [
+      {
+        "id": "test-item-pinterest",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      }
+    ],
+    "threads": [
+      {
+        "id": "test-item-threads",
+        "title": "测试内容",
+        "body": "这是一条测试内容。",
+        "sender": "测试用户",
+        "kind": "text",
+        "meta": {}
+      },
+      {
+        "id": "test-threads-message-1",
+        "title": "测试会话1",
+        "body": "这是一条测试消息。",
+        "sender": "测试联系人1",
+        "folder": "私信"
+      },
+      {
+        "id": "test-threads-activity-1",
+        "title": "测试动态1",
+        "body": "这是一条测试回复动态。",
+        "sender": "测试用户1",
+        "meta": {
+          "activityType": "reply"
+        }
+      },
+      {
+        "id": "test-threads-message-2",
+        "title": "测试会话2",
+        "body": "这是一条测试消息。",
+        "sender": "测试联系人2",
+        "folder": "私信"
+      },
+      {
+        "id": "test-threads-activity-2",
+        "title": "测试动态2",
+        "body": "这是一条测试回复动态。",
+        "sender": "测试用户2",
+        "meta": {
+          "activityType": "reply"
+        }
+      },
+      {
+        "id": "test-threads-message-3",
+        "title": "测试会话3",
+        "body": "这是一条测试消息。",
+        "sender": "测试联系人3",
+        "folder": "私信"
+      },
+      {
+        "id": "test-threads-activity-3",
+        "title": "测试动态3",
+        "body": "这是一条测试回复动态。",
+        "sender": "测试用户3",
+        "meta": {
+          "activityType": "reply"
+        }
+      }
+    ],
+    "appstore": [
+      {
+        "id": "test-appstore",
+        "title": "测试内容",
+        "body": "这是一条测试内容。"
       }
     ]
   },
-  "events": [
-    {
-      "id": "read-last",
-      "label": "模拟来电",
-      "event": "read",
-      "target": "kkt-last",
-      "actions": [
-        {
-          "type": "call",
-          "key": "test-call",
-          "value": "演示联系人"
-        }
-      ]
-    },
-    {
-      "id": "end-call",
-      "label": "通话后显示动态",
-      "event": "callEnded",
-      "target": "test-call",
-      "actions": [
-        {
-          "type": "unlock",
-          "key": "ig-after-call",
-          "value": true
-        }
-      ]
-    },
-    {
-      "id": "read-linked",
-      "label": "完成演示",
-      "event": "read",
-      "target": "ig-after-call",
-      "actions": [
-        {
-          "type": "ending",
-          "key": "",
-          "value": "演示完成"
-        }
-      ]
-    }
-  ],
-  "tests": [
-    {
-      "name": "聊天、来电与动态联动",
-      "steps": [
-        {
-          "event": "read",
-          "target": "kkt-last"
-        },
-        {
-          "event": "callAnswered",
-          "target": "test-call"
-        },
-        {
-          "event": "callEnded",
-          "target": "test-call"
-        },
-        {
-          "event": "read",
-          "target": "ig-after-call"
-        }
-      ],
-      "ending": "演示完成",
-      "expectUnlocked": ["ig-after-call"]
-    }
-  ],
-  "description": "中性的交互演示，内容可全部替换。"
+  "variables": {},
+  "events": [],
+  "tests": []
 }

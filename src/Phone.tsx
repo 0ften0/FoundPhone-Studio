@@ -1,3 +1,4 @@
+import { StatusGlyph } from "./ios/StatusGlyph";
 import { SocialDetail, socialDetailApps } from "./skins/SocialDetails";
 import { NativeCalculator } from "./ios/Calculator";
 import { HomeLauncher } from "./launcher/HomeLauncher";
@@ -29,6 +30,7 @@ import "./ios18.css";
 import "./device-system.css";
 import "./ios/tokens.css";
 import "./ios/reference.css";
+import "./ios/status-bar.css";
 import { WeChatSkin, WhatsAppSkin } from "./AppSkins";
 import { RichText } from "./RichText";
 import {
@@ -43,8 +45,6 @@ import {
   ChevronLeft,
   Plus,
   Search,
-  Wifi,
-  Signal,
   LockKeyhole,
   Heart,
   MessageCircle,
@@ -391,9 +391,11 @@ function PhoneRuntime({
               onClick={() =>
                 setPanel(panel === "notification" ? "" : "notification")
               }
+              className="status-time"
               aria-label="通知中心"
             >
               {displayTime}
+              <StatusGlyph kind="silent" />
             </button>
             <div className="dynamic-island" />
             <button
@@ -401,9 +403,11 @@ function PhoneRuntime({
               onClick={() => setPanel(panel === "control" ? "" : "control")}
               aria-label="控制中心"
             >
-              <Signal size={13} />
-              <Wifi size={14} />
-              <span className="ios-battery">
+              <StatusGlyph kind="cellular" />
+              <StatusGlyph kind="wifi" />
+              <span
+                className={`ios-battery${work.phone.battery <= 20 ? " low-battery" : ""}`}
+              >
                 <span style={{ width: `${work.phone.battery}%` }} />
                 <b>{work.phone.battery}</b>
               </span>

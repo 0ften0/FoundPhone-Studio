@@ -85,8 +85,8 @@
       "sha256": "681828100b7cfc7418ce4ef9373356e30db0c211bdbded69661cd90f1065a7f5"
     },
     "twitter": {
-      "file": "twitter.png",
-      "sha256": "95bd3e10f3a27d04ae86d0a7806241c4ac886b95c049a8f31e8746a3cceafa48"
+      "file": "twitter.svg",
+      "sha256": "44dd71701469d42b3e31c7f618021488f6c1b92998204ea2ee1781a0e3b5138a"
     },
     "telegram": {
       "file": "telegram.png",

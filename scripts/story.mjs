@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir, rm } from "node:fs/promises";
+import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createServer } from "vite";
 const [
   mode = "validate",
@@ -110,7 +110,7 @@ try {
       "public/blank-work.json",
       JSON.stringify(blank, null, 2) + "\n",
     );
-    if (process.env.FOUNDPHONE_TEST_PREVIEW === "1") {
+    {
       const preview = compileStory(
         JSON.parse(await readFile("stories/test-preview/story.json", "utf8")),
       ).work;
@@ -118,7 +118,7 @@ try {
         "public/test-work.json",
         JSON.stringify(preview, null, 2) + "\n",
       );
-    } else await rm("public/test-work.json", { force: true });
+    }
   } else if (!["validate", "test"].includes(mode))
     throw Error("未知命令 " + mode);
   console.log(

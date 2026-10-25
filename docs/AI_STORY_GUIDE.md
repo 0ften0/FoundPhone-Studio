@@ -13,4 +13,4 @@
 
 常用数据：chats 使用 participants 与 senderId 关联联系人；read 事件响应消息阅读；callEnded 可解锁隐藏动态。Instagram 的 meta.story="true" 标记快拍，folder="私信" 标记私信。具体字段以版本化 Schema 和编译器为准。
 
-本地测试预览仅供开发。设置 FOUNDPHONE_TEST_PREVIEW=1 后构建可生成测试数据；公开构建默认不包含它。正式体验使用默认中性演示或自己的故事。
+正式默认模板为完整 App 测试预览，只有测试文字，没有内置剧情。正式构建也提供 ?preview=test。作者创作时可替换 stories/template/story.json，或从纯空白脚本开始。
