@@ -3,7 +3,7 @@
   "id": "zhenghwan-phone-story",
   "title": "申正焕的手机",
   "description": "虚构平行世界故事。机主申正焕；手机密码提示：yu+do生日。第一版先录入 2026 年 7 月 8 日的 KakaoTalk 聊天。",
-  "revision": 5,
+  "revision": 6,
   "phone": {
     "owner": "申正焕",
     "date": "2026-07-08",
@@ -636,7 +636,79 @@
       ]
     }
   ],
-  "content": {},
+  "content": {
+    "instagram": [
+      {
+        "id": "ig-ordinary-shin-daifuku",
+        "title": "晚饭推荐",
+        "body": "晚饭推荐",
+        "time": "2026-07-08 20:10",
+        "sender": "ordinary_shin",
+        "avatar": "",
+        "kind": "post",
+        "media": "",
+        "likes": 28,
+        "comments": [],
+        "folder": "ordinary_shin",
+        "meta": {
+          "handle": "ordinary_shin",
+          "displayName": "shinyu",
+          "profilePosts": "2",
+          "followers": "1.3万",
+          "following": "0",
+          "caption": "晚饭推荐",
+          "verified": "true"
+        }
+      },
+      {
+        "id": "ig-ordinary-shin-toast",
+        "title": "早上好",
+        "body": "早上好",
+        "time": "2026-07-09 08:00",
+        "sender": "ordinary_shin",
+        "avatar": "",
+        "kind": "post",
+        "media": "",
+        "likes": 17,
+        "comments": [
+          "宁貌似是演员"
+        ],
+        "folder": "ordinary_shin",
+        "meta": {
+          "handle": "ordinary_shin",
+          "displayName": "shinyu",
+          "profilePosts": "2",
+          "followers": "1.3万",
+          "following": "0",
+          "caption": "早上好",
+          "verified": "true"
+        }
+      },
+      {
+        "id": "ig-twt-dohoon",
+        "title": "天气疯了 #dohoon",
+        "body": "天气疯了 #dohoon",
+        "time": "2026-07-08 17:30",
+        "sender": "TwT_offical",
+        "avatar": "",
+        "kind": "post",
+        "media": "",
+        "likes": 100001,
+        "comments": [],
+        "folder": "TwT_offical",
+        "meta": {
+          "handle": "TwT_offical",
+          "displayName": "TwT",
+          "bio": "idol team",
+          "profilePosts": "1",
+          "followers": "99.1万",
+          "following": "0",
+          "caption": "天气疯了 #dohoon",
+          "verified": "true"
+        }
+      }
+    ]
+  },
   "variables": {},
   "events": [],
   "tests": []
