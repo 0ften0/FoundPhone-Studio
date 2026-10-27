@@ -177,6 +177,9 @@ const definitions: [
     ["好友", "聊天"],
   ],
   ["appstore", "App Store", "system", "#087cff", ShoppingBag, ["搜索"]],
+  ["bubble", "Bubble", "messaging", "#7b91d9", MessageCircle, ["聊天", "订阅"]],
+  ["naver", "NAVER", "document", "#03c75a", Globe, ["搜索", "新闻", "博客"]],
+  ["navermap", "Naver Map", "records", "#03a86b", Map, ["地图", "收藏", "路线"]],
   ["threads", "Threads", "social", "#4d5150", AtSign, ["动态", "回复"]],
 ];
 export const registry: AppPlugin[] = definitions.map(

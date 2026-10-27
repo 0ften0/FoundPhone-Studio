@@ -39,6 +39,9 @@ const native = new Set([
   "forum",
   "tiktok",
   "twitter",
+  "naver",
+  "navermap",
+  "bubble",
   "telegram",
   "discord",
   "youtube",
@@ -56,6 +59,34 @@ const native = new Set([
 function DrawnArtwork({ id, date }: { id: string; date?: string }) {
   const uid = useId().replaceAll(":", "");
   if (detailedIcons.has(id)) return <DetailedArtwork id={id} />;
+  if (id === "naver") {
+    return (
+      <svg className="app-artwork" viewBox="0 0 64 64" aria-label="NAVER">
+        <rect width="64" height="64" rx="14" fill="#03C75A" />
+        <path d="M17 48V16h9l12 17V16h9v32h-9L26 31v17z" fill="#fff" />
+      </svg>
+    );
+  }
+  if (id === "navermap") {
+    return (
+      <svg className="app-artwork" viewBox="0 0 64 64" aria-label="Naver Map">
+        <rect width="64" height="64" rx="14" fill="#fff" />
+        <path d="M32 7c-11 0-20 8-20 19 0 14 20 32 20 32s20-18 20-32C52 15 43 7 32 7z" fill="#03C75A" />
+        <path d="M20 19h8l8 12V19h8v22h-8l-8-12v12h-8z" fill="#fff" />
+      </svg>
+    );
+  }
+  if (id === "bubble") {
+    return (
+      <svg className="app-artwork" viewBox="0 0 64 64" aria-label="Bubble">
+        <rect width="64" height="64" rx="14" fill="#F8AFCB" />
+        <path d="M13 27c0-10 8-17 19-17s19 7 19 17-8 17-19 17h-5l-9 7 2-12c-4-3-7-7-7-12z" fill="#fff" />
+        <circle cx="24" cy="27" r="2.5" fill="#F08CB6" />
+        <circle cx="32" cy="27" r="2.5" fill="#F08CB6" />
+        <circle cx="40" cy="27" r="2.5" fill="#F08CB6" />
+      </svg>
+    );
+  }
   if (!native.has(id)) {
     const Icon = getApp(id).icon;
     return (

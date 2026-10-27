@@ -722,7 +722,8 @@ export function InstagramSkin(p: SkinProps) {
     [query, setQuery] = useState(""),
     [likes, setLikes] = useSkinState<string[]>(p, "likes", []),
     [saved, setSaved] = useSkinState<string[]>(p, "saved", []),
-    [showSaved, setShowSaved] = useState(false);
+    [showSaved, setShowSaved] = useState(false),
+    [profileUser, setProfileUser] = useState<string | null>(null);
   const posts = p.items.filter(
       (i) =>
         i.kind === "post" ||
@@ -740,6 +741,10 @@ export function InstagramSkin(p: SkinProps) {
   const shown = (
     showSaved ? posts.filter((i) => saved.includes(i.id)) : posts
   ).filter((i) => (i.title + i.body + i.sender).includes(query));
+  const profileItems = posts.filter(
+    (i) => i.sender === (profileUser ?? posts[0]?.sender),
+  );
+  const profileItem = profileItems[0];
   return (
     <div className="instagram-ui independent-skin">
       <div className="app-nav ig-nav">
@@ -819,7 +824,17 @@ export function InstagramSkin(p: SkinProps) {
             {posts.map((i) => (
               <article className="ig-post" key={i.id}>
                 <div className="ig-post-author">
-                  <Avatar name={i.sender} round />
+                  <button
+                    className="ig-avatar-link"
+                    aria-label={`查看${i.sender}的主页`}
+                    onClick={() => {
+                      setProfileUser(i.sender);
+                      setShowSaved(false);
+                      setTab("个人主页");
+                    }}
+                  >
+                    <Avatar name={i.sender} src={i.avatar} round />
+                  </button>
                   <strong>{i.sender}</strong>
                   <button
                     aria-label={`帖子详情${i.title}`}
@@ -925,13 +940,13 @@ export function InstagramSkin(p: SkinProps) {
         ) : (
           <>
             <div className="ig-profile">
-              <Avatar name={posts[0]?.sender ?? "我"} round />
+              <Avatar name={profileUser ?? posts[0]?.sender ?? "我"} src={profileItem?.avatar} round />
               <div>
-                <strong>{posts.length}</strong>
+                <strong>{profileItem?.meta?.profilePosts ?? profileItems.length}</strong>
                 <small>帖子</small>
               </div>
               <div>
-                <strong>0</strong>
+                <strong>{profileItem?.meta?.followers ?? "0"}</strong>
                 <small>关注者</small>
               </div>
               <div>
@@ -939,7 +954,8 @@ export function InstagramSkin(p: SkinProps) {
                 <small>正在关注</small>
               </div>
             </div>
-            <h3 className="ig-profile-name">{posts[0]?.sender ?? "我"}</h3>
+            <h3 className="ig-profile-name">{profileItem?.meta?.displayName ?? profileUser ?? posts[0]?.sender ?? "我"}</h3>
+            {profileItem?.meta?.bio && <p className="ig-profile-bio">{profileItem.meta.bio}</p>}
             <div className="ig-profile-tabs">
               <button aria-label="帖子网格" onClick={() => setShowSaved(false)}>
                 <Grid size={21} />
@@ -962,11 +978,13 @@ export function InstagramSkin(p: SkinProps) {
               </button>
             </div>
             <div className="ig-explore">
-              {shown.map((i) => (
-                <button key={i.id} onClick={() => p.onItem(i)}>
-                  <ItemMedia item={i} />
-                </button>
-              ))}
+              {shown
+                .filter((i) => i.sender === (profileUser ?? posts[0]?.sender))
+                .map((i) => (
+                  <button key={i.id} onClick={() => p.onItem(i)}>
+                    <ItemMedia item={i} />
+                  </button>
+                ))}
             </div>
           </>
         )}

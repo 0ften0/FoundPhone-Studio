@@ -4358,6 +4358,21 @@ label {
   gap: 8px;
   padding: 12px;
 }
+.ig-post-author .ig-avatar-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.ig-post-author .ig-avatar-link:focus-visible {
+  outline: 2px solid #0095f6;
+  outline-offset: 3px;
+}
 .ig-post-author .skin-avatar {
   width: 26px;
   height: 26px;
