@@ -741,6 +741,10 @@ export function InstagramSkin(p: SkinProps) {
   const shown = (
     showSaved ? posts.filter((i) => saved.includes(i.id)) : posts
   ).filter((i) => (i.title + i.body + i.sender).includes(query));
+  const profileItems = posts.filter(
+    (i) => i.sender === (profileUser ?? posts[0]?.sender),
+  );
+  const profileItem = profileItems[0];
   return (
     <div className="instagram-ui independent-skin">
       <div className="app-nav ig-nav">
@@ -829,7 +833,7 @@ export function InstagramSkin(p: SkinProps) {
                       setTab("个人主页");
                     }}
                   >
-                    <Avatar name={i.sender} round />
+                    <Avatar name={i.sender} src={i.avatar} round />
                   </button>
                   <strong>{i.sender}</strong>
                   <button
@@ -936,13 +940,13 @@ export function InstagramSkin(p: SkinProps) {
         ) : (
           <>
             <div className="ig-profile">
-              <Avatar name={profileUser ?? posts[0]?.sender ?? "我"} round />
+              <Avatar name={profileUser ?? posts[0]?.sender ?? "我"} src={profileItem?.avatar} round />
               <div>
-                <strong>{posts.filter((i) => i.sender === (profileUser ?? posts[0]?.sender)).length}</strong>
+                <strong>{profileItem?.meta?.profilePosts ?? profileItems.length}</strong>
                 <small>帖子</small>
               </div>
               <div>
-                <strong>{profileUser === "ordinary_shin" ? "1.3万" : profileUser === "TwT_offical" ? "99.1万" : "0"}</strong>
+                <strong>{profileItem?.meta?.followers ?? "0"}</strong>
                 <small>关注者</small>
               </div>
               <div>
@@ -950,7 +954,8 @@ export function InstagramSkin(p: SkinProps) {
                 <small>正在关注</small>
               </div>
             </div>
-            <h3 className="ig-profile-name">{profileUser ?? posts[0]?.sender ?? "我"}</h3>
+            <h3 className="ig-profile-name">{profileItem?.meta?.displayName ?? profileUser ?? posts[0]?.sender ?? "我"}</h3>
+            {profileItem?.meta?.bio && <p className="ig-profile-bio">{profileItem.meta.bio}</p>}
             <div className="ig-profile-tabs">
               <button aria-label="帖子网格" onClick={() => setShowSaved(false)}>
                 <Grid size={21} />
