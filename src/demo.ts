@@ -31,6 +31,7 @@ export function createWork(title = "雨停之前"): Work {
         "notes",
         "safari",
         "settings",
+        "naver",
       ].includes(a.id),
       visible: true,
       dock: ["phone", "messages", "naver", "music"].includes(a.id),
